@@ -1,6 +1,6 @@
 import { Clock, OrdinaryClock } from '../src/index.js';
 
-// Clock示例
+// Clock examples
 console.log('=== Clock Examples ===');
 
 const clock = new Clock();
@@ -21,7 +21,7 @@ clock.merge([clock2]);
 console.log('After merge:', Object.fromEntries(clock.values));
 console.log('merge result:', clock.compareTo(clock2));
 
-// OrdinaryClock示例
+// OrdinaryClock examples
 console.log('\n=== OrdinaryClock Examples ===');
 
 const oc1 = new OrdinaryClock();

@@ -15,7 +15,7 @@ describe('Clock', () => {
   test('should increment counter', () => {
     clock.inc(0);
     clock.inc(0);
-    expect(clock.get(0)).toBe(2n);
+    expect(clock.get(0)).toBe(2);
   });
 
   test('should clear clock', () => {
@@ -35,9 +35,9 @@ describe('Clock', () => {
     c3.inc(2);
 
     c1.merge([c2, c3]);
-    expect(c1.get(0)).toBe(1n);
-    expect(c1.get(1)).toBe(1n);
-    expect(c1.get(2)).toBe(1n);
+    expect(c1.get(0)).toBe(1);
+    expect(c1.get(1)).toBe(1);
+    expect(c1.get(2)).toBe(1);
   });
 
   test('should calculate diff correctly', () => {
@@ -48,7 +48,7 @@ describe('Clock', () => {
     c2.inc(0);
 
     const diff = c1.diff(c2);
-    expect(diff.get(0)).toBe(1n);
+    expect(diff.get(0)).toBe(1);
   });
 
   test('should generate index key', () => {
@@ -66,7 +66,7 @@ describe('Clock', () => {
     c2.inc(0);
 
     const base = c1.baseCommon(c2);
-    expect(base.get(0)).toBe(1n);
+    expect(base.get(0)).toBe(1);
   });
 
   test('should compare clocks correctly', () => {

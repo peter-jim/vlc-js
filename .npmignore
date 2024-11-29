@@ -1,0 +1,11 @@
+test/
+examples/
+.git/
+.gitignore
+node_modules/
+.DS_Store
+*.log
+.vscode/
+.idea/
+coverage/
+.nyc_output/ 
