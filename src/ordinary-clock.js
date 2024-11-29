@@ -5,12 +5,12 @@ export class OrdinaryClock {
     this.values = new Map();
   }
 
-  // 检查是否为创世时钟
+  // Check if clock is in genesis state
   isGenesis() {
     return Array.from(this.values.values()).every(v => v === 0);
   }
 
-  // 合并两个时钟
+  // Merge with another clock
   merge(other) {
     const merged = new OrdinaryClock();
     const allKeys = new Set([...this.values.keys(), ...other.values.keys()]);
@@ -25,7 +25,7 @@ export class OrdinaryClock {
     return merged;
   }
 
-  // 更新时钟
+  // Update clock with others and increment ID
   update(others, id) {
     let updated = this.clone();
     for (const other of others) {
@@ -36,7 +36,7 @@ export class OrdinaryClock {
     return updated;
   }
 
-  // 计算基础时钟
+  // Calculate base clock from multiple clocks
   static base(others) {
     const combined = new OrdinaryClock();
     
@@ -54,13 +54,13 @@ export class OrdinaryClock {
     return combined;
   }
 
-  // 计算SHA256哈希
+  // Calculate SHA256 hash
   calculateSHA256() {
     const data = JSON.stringify(Array.from(this.values));
     return SHA256(data).toString();
   }
 
-  // 克隆时钟
+  // Create a deep copy of the clock
   clone() {
     const cloned = new OrdinaryClock();
     for (const [key, value] of this.values) {
@@ -69,7 +69,7 @@ export class OrdinaryClock {
     return cloned;
   }
 
-  // 比较两个时钟
+  // Compare with another clock
   compareTo(other) {
     const ge = (clock, otherClock) => {
       for (const [otherId, otherN] of otherClock.values) {

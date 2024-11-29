@@ -5,23 +5,23 @@ export class Clock {
     this.values = new Map();
   }
 
-  // 增加指定ID的计数
+  // Increment counter for specified ID
   inc(id) {
     const value = this.values.get(id) || 0;
     this.values.set(id, value + 1);
   }
 
-  // 获取指定ID的计数
+  // Get counter value for specified ID
   get(id) {
     return this.values.get(id) || 0;
   }
 
-  // 清空时钟
+  // Reset all counters
   clear() {
     this.values.clear();
   }
 
-  // 合并多个时钟
+  // Merge with other clocks
   merge(others) {
     for (const clock of others) {
       for (const [id, value] of clock.values) {
@@ -31,7 +31,7 @@ export class Clock {
     }
   }
 
-  // 计算与另一个时钟的差值
+  // Calculate difference with another clock
   diff(other) {
     const result = new Clock();
     for (const [id, value] of this.values) {
@@ -41,14 +41,14 @@ export class Clock {
     return result;
   }
 
-  // 生成索引键
+  // Generate index key for the clock
   indexKey() {
     return Array.from(this.values)
       .map(([index, value]) => `${index}-${value}-`)
       .join('');
   }
 
-  // 计算两个时钟的共同基础
+  // Calculate common base with another clock
   baseCommon(other) {
     const result = new Clock();
     for (const [id, value] of this.values) {
@@ -58,13 +58,13 @@ export class Clock {
     return result;
   }
 
-  // 检查是否为创世时钟
+  // Check if clock is in genesis state
   isGenesis() {
     return Array.from(this.values.values())
       .reduce((sum, value) => sum + value, 0) === 0;
   }
 
-  // 比较两个时钟
+  // Compare with another clock
   compareTo(other) {
     let less = false;
     let greater = false;
@@ -90,13 +90,13 @@ export class Clock {
     return 0;
   }
 
-  // 计算SHA256哈希
+  // Calculate SHA256 hash
   calculateSHA256() {
     const data = JSON.stringify(Array.from(this.values));
     return SHA256(data).toString();
   }
 
-  // 克隆时钟
+  // Create a deep copy of the clock
   clone() {
     const cloned = new Clock();
     for (const [key, value] of this.values) {
